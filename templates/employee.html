@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% with title='Employee {{ employee.employee_id }}' %}
+{% endwith %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>EmployeeId</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>{{ employee.employee_id }}</td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.email }}</td>
+        </tr>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% with title='Welcome to Chinook!' %}
+{% endwith %}
+
+{% block content %}
+  <h1>Welcome to the Chinook database!</h1>
+{% if number > 0 %}
+  <h3>You entered the number {{ number }}</h3>
+{% endif %}
+{% endblock %}

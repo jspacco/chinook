@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% with title='Track {{ track.name }}' %}
+{% endwith %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>TrackId</th>
+            <th>Name</th>
+            <th>AlbumId</th>
+            <th>Composer</th>
+        </tr>
+        <tr>
+            <td>{{ track.track_id }}</td>
+            <td>{{ track.name }}</td>
+            <td>{{ track.album_id }}</td>
+            <td>{{ track.composer }}</td>
+        </tr>
+    </table>
+
+{% endblock %}
