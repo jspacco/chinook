@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "repl-nix-chinook"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "repl_nix_chinook"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+peewee = "^3.17.1"
+flask = "^3.0.2"
+flask-peewee = "^3.0.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
