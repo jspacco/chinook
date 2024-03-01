@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% with title='invoice' %}
+{% endwith %}
+
+{% block content %}
+
+<table>
+<tr>
+  <th>invoice_id</th>
+  <th> track title </th>
+</tr>
+
+{% for invoice_item in invoice_items %}
+
+<tr>
+  <td>{{ invoice.invoice_id }}</td>
+  <td>{{ invoice_item.track.name }}</td>
+</tr>
+  
+{% endfor %}
+  
+</table>
+
+{% endblock %}

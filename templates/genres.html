@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% with title='all genres' %}
+{% endwith %}
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>name</th>
+            <th>count</th>
+        </tr>
+      
+        {% for genre in genres %}
+        <tr>
+            <td>{{ genre.name }}</td>
+            <td>{{ genre_map[genre.name] }}</td>
+        </tr>
+        {% endfor %}
+      
+    </table>
+
+{% endblock %}

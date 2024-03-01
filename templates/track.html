@@ -9,13 +9,15 @@
         <tr>
             <th>TrackId</th>
             <th>Name</th>
-            <th>AlbumId</th>
+            <th>Album</th>
+            <th>Artist</th>
             <th>Composer</th>
         </tr>
         <tr>
             <td>{{ track.track_id }}</td>
             <td>{{ track.name }}</td>
-            <td>{{ track.album_id }}</td>
+            <td>{{ track.album.title }}</td>
+            <td>{{ track.album.artist.name }}</td>
             <td>{{ track.composer }}</td>
         </tr>
     </table>

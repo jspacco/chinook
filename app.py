@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 db = Database(app)
 
-from models import Album, Artist, Customer, Employee, Genre, Invoice, MediaType, Playlist, Track, PlaylistTrack
+from models import Album, Artist, Customer, Employee, Genre, Invoice, MediaType, Playlist, Track, PlaylistTrack, InvoiceItem
 
 
 @app.route('/')
@@ -19,15 +19,30 @@ def index(number=-1):
 @app.route('/track/<int:track_id>')
 def track(track_id):
   track = Track.get(Track.track_id == track_id)
-  #print(track.name)
-  #print(track.album.artist.name)
-  #print(f'playlist track: {PlaylistTrack.get(PlaylistTrack.playlist == 1, PlaylistTrack.track == 3402)}')
   return render_template('track.html', track=track)
 
 
 @app.route('/employee/<int:employee_id>')
 def employee(employee_id):
   employee = Employee.get(Employee.employee_id == employee_id)
-  print(employee.first_name)
-  print(employee.email)
   return render_template('employee.html', employee=employee)
+
+
+@app.route('/genres')
+def genres():
+  genres = Genre.select()
+  genre_map = {}
+  for genre in genres:
+    x = Track.select().where(Track.genre == genre).count()
+    genre_map[genre.name] = x
+  print(len(genre_map))
+  return render_template('genres.html', genres=genres, genre_map=genre_map)
+
+
+@app.route('/invoice/<int:invoice_id>')
+def invoice(invoice_id):
+  invoice = Invoice.get(Invoice.invoice_id == invoice_id)
+  invoice_items = InvoiceItem.select().where(InvoiceItem.invoice == invoice)
+  return render_template('invoice.html',
+                         invoice=invoice,
+                         invoice_items=invoice_items)
